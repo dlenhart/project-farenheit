@@ -1,6 +1,6 @@
 # project-farenheit
 
-description , goals here
+Will update documentation soon -- Drew D. Lenhart ( 3/18/2019 ).
 
 
 ## Hardware
