@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>project-farenheit</title>
+  <link rel="stylesheet" href="/resources/css/style.css">
+  <link rel="stylesheet" href="/resources/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="/resources/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_links" aria-expanded="false" aria-controls="navbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><img src="/resources/images/weathertwo.png" width="22" height="22" alt="" /></a>
+      </div>
+      <div id="navbar_links" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href='/'>Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if auth.authenticated %}
+          <li><a href=""><em>Hello, {{ auth.details.name }}</em></a></li>
+          <li><a href="/logout">Logout</a></li>
+          {% else %}
+          <li><a href="/login">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid fill" style="margin-top: 80px; margin-left: 5%; margin-right: 5%">
+    {% block content %} {% endblock %}
+    <div class="row">
+      <div class="panel panel-default" data-title="category">
+        <div class="panel-body container-fluid sm-font" data-id="category">
+          © 2019 Drew D. Lenhart - Project Farenheit
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

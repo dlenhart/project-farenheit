@@ -1,0 +1,36 @@
+{
+  "name": "project-farenheit",
+  "description": "Project to gather temperatures at home using various equipment.",
+  "keywords": ["PHP", "Slim", "project", "temperatures"],
+  "homepage": "https://drewlenhart.com",
+  "license": "MIT",
+  "authors": [{
+    "name": "Drew D. Lenhart",
+    "email": "dlenhart@gmail.com",
+    "homepage": "https://drewlenhart.com"
+  }],
+  "require": {
+    "php": ">=5.6.0",
+    "slim/slim": "^3.1",
+    "slim/php-view": "^2.2.0",
+    "twig/twig": "^1.2",
+    "slim/twig-view": "^2.1",
+    "slim/http-cache": "^0.3.0",
+    "slim/flash": "^0.1",
+    "illuminate/database": "^5.2",
+    "respect/validation": "^1.1",
+    "monolog/monolog": "^1.17"
+  },
+  "require-dev": {
+    "guzzlehttp/guzzle": "~6.0",
+    "phpunit/phpunit": "^6.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "APP\\": "src"
+    },
+    "files": [
+      "config/database.php"
+    ]
+  }
+}

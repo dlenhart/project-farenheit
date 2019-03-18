@@ -1,0 +1,139 @@
+/* --------------------------------
+
+Primary style - DDL
+
+-------------------------------- */
+body {
+
+  }
+
+.resultsConsole {
+  background-color: black;
+  color: green;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  width: 40% !important;
+  margin-top: 2%;
+}
+
+.installUser{
+  width: 40% !important;
+}
+
+.sm-font {
+  font-size: 10px !important;
+}
+
+/*----------------------------------
+Spinner styles
+----------------------------------*/
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+/*----------------------------------
+Button override
+----------------------------------*/
+
+.btn-success {
+  border: 1px solid #1B1B1B !important;
+}
+
+/*----------------------------------
+Health Monitor styles
+----------------------------------*/
+
+.tile-stats {
+	position: relative;
+	display: block;
+	border: 1px solid #1B1B1B;
+	-webkit-border-radius: 5px;
+	overflow: hidden;
+	padding-left: 10px;
+	-webkit-background-clip: padding-box;
+	-moz-border-radius: 5px;
+	-moz-background-clip: padding;
+	border-radius: 5px;
+	background-clip: padding-box;
+	background: rgba(10, 130, 240, 0.08);
+	-moz-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	-webkit-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+
+.tile-stats .image {
+	color: #BAB8B8;
+	position: absolute;
+	right: 23px;
+	top: 12px;
+	z-index: 1;
+}
+
+.green{
+  background-color: #32960B !important;
+  border: 1px solid #1B1B1B;
+}
+
+.grey {
+  background-color: #9B9C9D !important;
+  border: 1px solid #1B1B1B;
+  color: white !important;
+}
+
+.red{
+  background-color: #C70A0A !important;
+}
+
+.orange{
+  background-color: #F5A83D !important;
+}
+
+
+@media (max-width: 1200px) {
+	.col-sm-2{
+		width: 20% !important;
+		margin-bottom: 2% !important;
+	}
+}
+
+@media (max-width: 800px) {
+	.col-sm-2{
+		width: 40% !important;
+		margin-bottom: 2% !important;
+	}
+
+  .circle {
+    width: 200px !important;
+    height: 200px !important;
+    line-height: 190px !important;
+  }
+
+}
+
+@media (max-width: 600px) {
+	.col-sm-2{
+		width: 80% !important;
+		margin-bottom: 2% !important;
+    margin: 0 auto !important;
+	}
+
+  .circle {
+    width: 200px !important;
+    height: 200px !important;
+    line-height: 190px !important;
+  }
+}

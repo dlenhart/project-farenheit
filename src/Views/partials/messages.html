@@ -1,0 +1,10 @@
+
+{% if flash.getMessage('url') %}
+<div class="alert alert-info" role="alert">You will be redirected to: <b>
+		{{ flash.getMessage('url') | first }}</b>
+</div>
+{% endif %} {% if flash.getMessage('err') %}
+<div class="alert alert-danger" role="alert"><b>
+		{{ flash.getMessage('err') | first }}</b>
+</div>
+{% endif %}
