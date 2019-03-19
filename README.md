@@ -8,7 +8,7 @@ A few years ago, approx 2015, I bought a Raspberry Pi 2 & a DS18B20 waterproof t
 
 ## The Goal
 
-Build a temperature gathering application to run on a Raspberry Pi. The application will log the current temperature to a flat file two times a day.
+Build a temperature gathering application to run on a Raspberry Pi. The application will log the current temperature to a flat file two times a day. The goal is to keep the system running as long as possible with minimal maintenance.
 
 **Requirements:**
 * **House the Raspberry Pi & other components in an enclosure**
@@ -24,15 +24,16 @@ Build a temperature gathering application to run on a Raspberry Pi. The applicat
   2.  Interface to read datafile ( history ).
   3.  Authentication.
 * **Various scripts**
-  1.  Bash script to CURL temperature endpoint ( cron job ).
-  2.  Bash script to commit data file nightly ( cron job ).
+  1.  Bash script to CURL temperature endpoint ( CRON job ).
+  2.  Bash script to commit data file nightly ( CRON job ).
   3.  Python script to turn on/off led's via gpio pins.
+    1. Bash script to CURL test endpoint.
 
 
 ## Hardware
 
 **Parts:**
-* Raspberry Pi w/ Raspbian installed
+* Raspberry Pi w/ Raspbian installed.
 * DS18B20 Digital Temperature sensor
 * 4.7K or 10K ohm resistor
 * Breadboard
@@ -40,8 +41,15 @@ Build a temperature gathering application to run on a Raspberry Pi. The applicat
 * [Pi Cobbler](https://www.adafruit.com/product/2029)
 * IDE ribbon cable.
 
+**Optional Consideration:**
+* 2nd Raspberry Pi ( backup Pi ).
+* [Battery backup](https://www.adafruit.com/product/1565) - more on this later.
 
-https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware
+
+I followed the [Temperature sensor assembly instructions](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware) from Adafruit. It is pretty easy to get up and going with these instructions. As an alternative I used a more permanent solution than using a breadboard.
+
+
+
 
 ## Software
 
