@@ -6,6 +6,7 @@ I thought it would be interesting, as an experiment, to see if I can build a sys
 
 A few years ago, approx 2015, I bought a Raspberry Pi 2 & a DS18B20 waterproof temperature sensor and other various components needed from Adafruit (see links below). I got it to function, using a script to record the temperature from the sensor and log it to a database. I even build a little web dashboard to display the temperature. It ran in my laundry room for several months, collecting the temperature. After a house move, it was disconnected and sat in a drawer for 2 years, oops. This will be re-used for my system.
 
+***
 ## The Goal
 
 Build a temperature gathering application to run on a Raspberry Pi. The application will log the current temperature to a flat file two times a day. The goal is to keep the system running as long as possible with minimal maintenance.
@@ -29,7 +30,7 @@ Build a temperature gathering application to run on a Raspberry Pi. The applicat
   3.  Python script to turn on/off led's via gpio pins.
     1. Bash script to CURL test endpoint.
 
-
+***
 ## Hardware
 
 **Parts:**
@@ -41,21 +42,25 @@ Build a temperature gathering application to run on a Raspberry Pi. The applicat
 * [Pi Cobbler](https://www.adafruit.com/product/2029)
 * IDE ribbon cable.
 
-**Optional Consideration:**
+
+**Note these may be added down the road**
 * 2nd Raspberry Pi ( backup Pi ).
 * [Battery backup](https://www.adafruit.com/product/1565) - more on this later.
 
+**Temperature sensor setup**
 
 I followed the [Temperature sensor assembly instructions](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware) from Adafruit. It is pretty easy to get up and going with these instructions. As an alternative I used a more permanent solution than using a breadboard.
 
+**Indicator Light Setup**
 
-
+info coming soon
+***
 
 ## Software
 
 info coming soon
 
-## Requirements
+## Software Requirements
 
 To run, keep in mind you really need to fulfill the existing hardware for this to be useful, although you can replace the `GPIO_PATH` in `config.ini` to the test file, `data\\w1-slave`, if one chooses to tinker with the software.
 
@@ -73,7 +78,7 @@ To run, keep in mind you really need to fulfill the existing hardware for this t
     1. Follow the install instructions.
     2. d
 
-
+***
 ## Website
 
 * https://drewlenhart.com
