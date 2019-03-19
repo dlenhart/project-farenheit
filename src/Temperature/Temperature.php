@@ -39,7 +39,15 @@ class Temperature
     {
 
         $utility = new Utility;
-        $temperature_file = $utility->getINIValue('GPIO_PATH');
+
+        if($utility->getINIValue('GPIO_TEST')){
+          //test path
+          $temperature_file = $utility->getINIValue('GPIO_TEST_PATH');
+        }else{
+          //production path
+          $temperature_file = $utility->getINIValue('GPIO_PATH');
+        }
+
         $this->temperature_file = $temperature_file;
 
     }
