@@ -1,15 +1,21 @@
 # project-farenheit
 
+### Experiment Status: TESTING | Experiment Start Date: April 2, 2019
+
+### [View current data here](data/temperature_fw_in.dat)
+***
+## Introduction
+
 This project is a fun little experiment with a Raspberry Pi 2. Awhile ago, a Youtube video caught my attention about building a computer system to last decades with minimal downtime. The video didn't really go into the "how" or the technical side of actually building a system. It did, however make some interesting points on what you need to think about when planning for such a system. [How to build a System that will run for 30 years](https://youtu.be/ALEor2mnIsI)
 
 I thought it would be interesting, as an experiment, to see if I can build a system that lasts for years, even a decade! I also wanted this system to actually perform a specific function. How long can I manage to keep it alive without little to no maintenance? To do this experiment, I had absolutely no budget (HAHA), so I settled on using equipment I already had around the house.
 
-A few years ago, approx 2015, I bought a Raspberry Pi 2 & a DS18B20 waterproof temperature sensor and other various components needed from Adafruit (see links below). I got it to function, using a script to record the temperature from the sensor and log it to a database. I even build a little web dashboard to display the temperature. It ran in my laundry room for several months, collecting the temperature. After a house move, it was disconnected and sat in a drawer for 2 years, oops. This will be re-used for my system.
+A few years ago, approx 2015, I bought a Raspberry Pi 2 & a DS18B20 waterproof temperature sensor and other various components needed from Adafruit (see links below). I got it to function, using a script to record the temperature from the sensor and log it to a database. I even build a little web dashboard to display the temperature. It ran in my laundry room for several months, collecting the temperature. After a house move, it was disconnected and sat in a drawer for 2 years, oops. This will be re-used for my experiment.
 
 ***
 ## The Goal
 
-Build a temperature gathering application to run on a Raspberry Pi. The application will log the current temperature to a flat file two times a day. The goal is to keep the system running as long as possible with minimal maintenance.
+Build a temperature gathering system & application to run on a Raspberry Pi. The application will log the current temperature to a flat file two times a day. The goal is to keep the system running as long as possible with minimal maintenance.
 
 **Requirements:**
 * **House the Raspberry Pi & other components in an enclosure**
@@ -42,7 +48,6 @@ Build a temperature gathering application to run on a Raspberry Pi. The applicat
 * [Pi Cobbler](https://www.adafruit.com/product/2029)
 * IDE ribbon cable.
 
-
 **Note these may be added down the road**
 * 2nd Raspberry Pi ( backup Pi ).
 * [Battery backup](https://www.adafruit.com/product/1565) - more on this later.
@@ -54,15 +59,20 @@ I followed the [Temperature sensor assembly instructions](https://learn.adafruit
 **Indicator Light Setup**
 
 info coming soon
+
+**Final Assembly**
+
+final setup w/ images coming soon.
+
 ***
 
 ## Software
 
-info coming soon
+The main software components are the Dashboard and the Restful API.
 
 ## Software Requirements
 
-To run, keep in mind you really need to fulfill the existing hardware for this to be useful, although you can replace the `GPIO_PATH` in `config.ini` to the test file, `data\\w1-slave`, if one chooses to tinker with the software.
+Keep in mind you really need to fulfill the existing hardware for this to be useful, although you can replace the `GPIO_TEST` setting in `config.ini` to `true`, and the application will use the provided mock file located at `/data/w1-slave` ( allows you to at least tinker with the application without the temperature sensor )
 
 * PHP 5.6 +
 * Apache w/ Mod_Rewrite
@@ -71,12 +81,18 @@ To run, keep in mind you really need to fulfill the existing hardware for this t
 
 ## Software Setup
 
-* Run - composer install
-* Launch local PHP Server from folder `php -S localhost:8000 -t public public/index.php`
-* OPTIONAL: Launch server.bat if on Windows or server.sh for Linux - (alternative)!
-  1. Visit `http://localhost:8000`
-    1. Follow the install instructions.
-    2. d
+* Run - **composer install** in project root.
+* Apache - point virtual host document root to `public/`
+* Ensure `logs/` `data/` is web writable.
+* Launch `http://localhost` or `http://servername` & follow install instructions.
+
+**OR**
+
+* Run - **composer install** in project root
+* Launch LOCAL PHP Server from folder `php -S localhost:8000 -t public public/index.php`
+  1. OPTIONAL: Launch server.bat if on Windows or server.sh for Linux - (alternative)!
+  2. Visit `http://localhost:8000` & follow install instructions.
+
 
 ***
 ## Website
