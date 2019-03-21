@@ -74,11 +74,11 @@ The main software components are the Dashboard and the Restful API.
 
 The dashboard is self explanatory. Displays current temperature on page load ( Ajax call to API ). Refresh button sends additional call. History directs to separate page which reads datafile.
 
-![Dashboard](materials/images/pf_dashboard.png){:class="img-responsive"}
+![Dashboard](materials/images/pf_dashboard.png)
 
 Screen shot if temperature sensor is unable to get a reading:
 
-![Dashboard errors](materials/images/pf_dashboard_errors.png){:class="img-responsive"}
+![Dashboard errors](materials/images/pf_dashboard_errors.png)
 
 ## Software Requirements
 
