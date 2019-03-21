@@ -47,7 +47,7 @@ class Install
         //simply overrite the file if it exsists already
         $handle = fopen($file, 'w') or die('Cannot open file:  '. $file);
         fwrite($handle, 'true'); //write true.
-      fclose($handle); //close file
+        fclose($handle); //close file
 
       //use checkInstalled method to verify file write and return boolean
         if (!$this->checkInstalled()) {

@@ -10,7 +10,7 @@
     "homepage": "https://drewlenhart.com"
   }],
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=7.1.0",
     "slim/slim": "^3.1",
     "slim/php-view": "^2.2.0",
     "twig/twig": "^1.2",

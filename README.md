@@ -70,11 +70,21 @@ final setup w/ images coming soon.
 
 The main software components are the Dashboard and the Restful API.
 
+**Dashboard**
+
+The dashboard is self explanatory. Displays current temperature on page load ( Ajax call to API ). Refresh button sends additional call. History directs to separate page which reads datafile.
+
+![Dashboard](materials/images/pf_dashboard.png)
+
+Screen shot if temperature sensor is unable to get a reading:
+
+![Dashboard errors](link-to-image)
+
 ## Software Requirements
 
 Keep in mind you really need to fulfill the existing hardware for this to be useful, although you can replace the `GPIO_TEST` setting in `config.ini` to `true`, and the application will use the provided mock file located at `/data/w1-slave` ( allows you to at least tinker with the application without the temperature sensor )
 
-* PHP 5.6 +
+* PHP 7.1 +
 * Apache w/ Mod_Rewrite
 * [Composer](https://getcomposer.org/download/)
 * Python3 ( some scripts required )
@@ -96,6 +106,8 @@ Keep in mind you really need to fulfill the existing hardware for this to be use
 **Additional Steps**
 
 1. Update `scripts/record_temperature.sh` with username/password created in installation.
+2. Update 'config.ini', 'GPIO_PATH' with location of temperature output file.
+  a. e.g. ``
 
 
 ***

@@ -98,21 +98,21 @@ class Temperature
             //get temperature ( 2nd line ) in one wire file
             $temperature = $this->stripWhiteSpaces($this->parseLastValue($lines[1], "="));
             $results = array(
-          'status' => $status,
-          'timestamp' => $timestamp,
-          'celcius' => $this->calculateCelcius($temperature),
-          'ferenheit' => $this->calculateFerenheit($temperature),
-          'attempts' => $attempts
-        );
+              'status' => $status,
+              'timestamp' => $timestamp,
+              'celcius' => $this->calculateCelcius($temperature),
+              'ferenheit' => $this->calculateFerenheit($temperature),
+              'attempts' => $attempts
+            );
         } else {
             //output the bad results
             $results = array(
-          'status' => $status,
-          'timestamp' => $timestamp,
-          'celcius' => null,
-          'ferenheit' => null,
-          'attempts' => $attempts
-        );
+              'status' => $status,
+              'timestamp' => $timestamp,
+              'celcius' => null,
+              'ferenheit' => null,
+              'attempts' => $attempts
+            );
         }
 
         return $results;
@@ -160,5 +160,5 @@ class Temperature
     {
         return (float)$temperature / 1000.0;
     }
-    
+
 }
