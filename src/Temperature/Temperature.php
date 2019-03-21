@@ -40,12 +40,12 @@ class Temperature
 
         $utility = new Utility;
 
-        if($utility->getINIValue('GPIO_TEST')){
-          //test path
-          $temperature_file = $utility->getINIValue('GPIO_TEST_PATH');
-        }else{
-          //production path
-          $temperature_file = $utility->getINIValue('GPIO_PATH');
+        if ($utility->getINIValue('GPIO_TEST')) {
+            //test path
+            $temperature_file = $utility->getINIValue('GPIO_TEST_PATH');
+        } else {
+            //production path
+            $temperature_file = $utility->getINIValue('GPIO_PATH');
         }
 
         $this->temperature_file = $temperature_file;
@@ -58,67 +58,64 @@ class Temperature
     */
     public function readTemperature()
     {
-      $timestamp = date("Y-m-d H:i:s");
-      //read the one wire file
+        $timestamp = date("Y-m-d H:i:s");
+        //read the one wire file
 
-      if(!file_exists($this->temperature_file)){
-          //return something nice so controller can return a readable json message.
-          $error = array(
+        if (!file_exists($this->temperature_file)) {
+            //return something nice so controller can return a readable json message.
+            $error = array(
             'status' => 'ERR',
             'msg' => 'W1 file does not exsist! Verify path in config.ini!'
           );
-          return $error;
-          //die('W1 file does not exsist! Verify path in config.ini!');
-      }
-
-      $file = file($this->temperature_file);
-      $lines = array_slice($file, 0, 2);
-      $status = $this->stripWhiteSpaces($this->parseLastValue($lines[0], " "));
-      $attempts = 1;
-
-      if($status == 'NO'){
-        //re-attempt read of file with pause
-        for($i = 1; $i <= $this->attempts; $i ++)
-        {
-            $file = file($this->temperature_file);
-            $lines = array_slice($file, 0, 2);
-            $status = $this->stripWhiteSpaces($this->parseLastValue($lines[0], " "));
-            $attempts = $i + 1;
-            if($status == 'YES'){
-              $this->statusFlag = true;
-              break 1;
-            }else{
-              $this->statusFlag = false;
-            }
-            sleep(1);
+            return $error;
+            //die('W1 file does not exsist! Verify path in config.ini!');
         }
-      }
 
-      if($this->statusFlag)
-      {
-        //get temperature ( 2nd line ) in one wire file
-        $temperature = $this->stripWhiteSpaces($this->parseLastValue($lines[1], "="));
-        $results = array(
+        $file = file($this->temperature_file);
+        $lines = array_slice($file, 0, 2);
+        $status = $this->stripWhiteSpaces($this->parseLastValue($lines[0], " "));
+        $attempts = 1;
+
+        if ($status == 'NO') {
+            //re-attempt read of file with pause
+            for ($i = 1; $i <= $this->attempts; $i ++) {
+                $file = file($this->temperature_file);
+                $lines = array_slice($file, 0, 2);
+                $status = $this->stripWhiteSpaces($this->parseLastValue($lines[0], " "));
+                $attempts = $i + 1;
+                if ($status == 'YES') {
+                    $this->statusFlag = true;
+                    break 1;
+                } else {
+                    $this->statusFlag = false;
+                }
+                sleep(1);
+            }
+
+        }
+
+        if ($this->statusFlag) {
+            //get temperature ( 2nd line ) in one wire file
+            $temperature = $this->stripWhiteSpaces($this->parseLastValue($lines[1], "="));
+            $results = array(
           'status' => $status,
           'timestamp' => $timestamp,
           'celcius' => $this->calculateCelcius($temperature),
           'ferenheit' => $this->calculateFerenheit($temperature),
           'attempts' => $attempts
         );
-
-      }else{
-        //output the bad results
-        $results = array(
+        } else {
+            //output the bad results
+            $results = array(
           'status' => $status,
           'timestamp' => $timestamp,
           'celcius' => null,
           'ferenheit' => null,
           'attempts' => $attempts
         );
+        }
 
-      }
-
-      return $results;
+        return $results;
     }
 
     /**
@@ -129,8 +126,8 @@ class Temperature
     */
     public function parseLastValue($array = array(), $delimeter)
     {
-      $split = explode($delimeter, $array);
-      return end($split);
+        $split = explode($delimeter, $array);
+        return end($split);
     }
 
     /**
@@ -140,7 +137,7 @@ class Temperature
     */
     public function stripWhiteSpaces($string)
     {
-      return trim(preg_replace('!\s+!', ' ', $string));
+        return trim(preg_replace('!\s+!', ' ', $string));
     }
 
     /**
@@ -150,8 +147,8 @@ class Temperature
     */
     public function calculateFerenheit($temperature)
     {
-      $tmp = $this->calculateCelcius($temperature);
-      return $tmp * 9.0 / 5.0 + 32.0;
+        $tmp = $this->calculateCelcius($temperature);
+        return $tmp * 9.0 / 5.0 + 32.0;
     }
 
     /**
@@ -161,7 +158,7 @@ class Temperature
     */
     public function calculateCelcius($temperature)
     {
-      return (float)$temperature / 1000.0;
+        return (float)$temperature / 1000.0;
     }
-
+    
 }

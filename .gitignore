@@ -4,7 +4,8 @@
 /data/*.sqlite
 
 # Install file
-/config/installed
+/data/installed
+/sccripts/test_temperature_log.bat
 
 # Windows image file caches
 Thumbs.db

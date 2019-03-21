@@ -41,12 +41,10 @@ class InstallController extends AbstractController
             echo ">__INFO, creating a table with some sample data......<br /><br />";
             //check for sample table
             if (DB::connection('sqlite')->getSchemaBuilder()->hasTable('Sample')) {
-
                 echo '>__WARNING, table already exsists!<br />';
                 // Echo out whats in sample table!
                 $output = new Sample;
                 $output = Sample::all();
-
             } else {
                 echo '>__INFO, creating sample table.....<br /><br />';
                 $create = DB::connection('sqlite')->select("CREATE TABLE Sample (
@@ -91,10 +89,9 @@ class InstallController extends AbstractController
     			   )");
 
             echo ">__SUCCESS, ready to create new user.";
-
         } else {
             echo ">__WARNING, User table already exsists!";
         }
     }
-
+    
 }

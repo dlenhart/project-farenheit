@@ -8,26 +8,32 @@
 				<form action="/register" method="post" autocomplete="off">
 					<div class="form-group {{ ERRORS.name ? ' has-error' : '' }}">
 						<label for="name">Name: </label>
-						<input type="text" class="form-control" name="name" id="name" value="{{ DATA.name }}"> {% if ERRORS.name %}
-						<span class="help-block">{{ ERRORS.name | first }}</span> {% endif %}
-					</div>
-					<input type="hidden" class="form-control" name="initial" id="initial" value="{{ initial }}">
-					<div class="form-group {{ ERRORS.email ? ' has-error' : '' }}">
-						<label for="email">Email: </label>
-						<input type="text" class="form-control" id="email" name="email" value="{{ DATA.email }}" placeholder="you@email.com"> {% if ERRORS.email %}
-						<span class="help-block">{{ ERRORS.email | first }}</span> {% endif %}
-					</div>
-					<div class="form-group {{ ERRORS.password ? ' has-error' : '' }}">
-						<label for="password">Password: </label>
-						<input type="password" class="form-control" name="password" id="password" value=""> {% if ERRORS.password %}
-						<span class="help-block">{{ ERRORS.password | first }}</span> {% endif %}
-					</div>
-					<hr />
-					<button type="submit">Register</button>
-					{% if note %}
-						<br /><br />
-						<div class="alert alert-info" role="alert"><em>{{ note }}</em></div>
-					{% endif %}
+						<input type="text" class="form-control" name="name" id="name" value="{{ DATA.name }}">
+						{% if ERRORS.name %}
+							<span class="help-block">{{ ERRORS.name | first }}</span>
+						{% endif %}
+							</div>
+							<input type="hidden" class="form-control" name="initial" id="initial" value="{{ initial }}">
+							<div class="form-group {{ ERRORS.email ? ' has-error' : '' }}">
+								<label for="email">Email: </label>
+								<input type="text" class="form-control" id="email" name="email" value="{{ DATA.email }}" placeholder="you@email.com">
+								{% if ERRORS.email %}
+									<span class="help-block">{{ ERRORS.email | first }}</span>
+								{% endif %}
+							</div>
+							<div class="form-group {{ ERRORS.password ? ' has-error' : '' }}">
+								<label for="password">Password: </label>
+								<input type="password" class="form-control" name="password" id="password" value="">
+								{% if ERRORS.password %}
+									<span class="help-block">{{ ERRORS.password | first }}</span>
+								{% endif %}
+							</div>
+							<hr />
+							<button type="submit">Register</button>
+					 {% if note %}
+							<br /><br />
+							<div class="alert alert-info" role="alert"><em>{{ note }}</em></div>
+					 {% endif %}
 				</form>
 
 			</div>

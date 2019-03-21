@@ -38,12 +38,13 @@ class Auth
 
         //passing in boolean $api - dont want the api route to register session
         if (password_verify($password, $user->password)) {
-            if(!$api)
-              $_SESSION['admin'] = $email;
+            if (!$api) {
+                $_SESSION['admin'] = $email;
+            }
             return true;
         }
 
         return false;
     }
-
+    
 }

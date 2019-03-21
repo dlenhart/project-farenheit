@@ -26,8 +26,8 @@ class AuthController extends AbstractController
     public function login(Request $request, Response $response, $args)
     {
         //check if already logged in. b/c we want to redirect
-        if(isset($_SESSION['admin'])){
-          return $response->withRedirect('/');
+        if (isset($_SESSION['admin'])) {
+            return $response->withRedirect('/');
         }
 
         $data = array('title' => 'Login');
@@ -92,7 +92,7 @@ class AuthController extends AbstractController
     {
         //if already installed sent to Login Page.
         if ($this->install->checkInstalled()) {
-          return $response->withRedirect('/login');
+            return $response->withRedirect('/login');
         }
         //initial flag to pass to view - indicates its the initial user create -
         // - passes boolean to postRegister to mark the install process complete.
@@ -125,8 +125,8 @@ class AuthController extends AbstractController
             $allVars = (array)$request->getParsedBody();
             $initial = $allVars['initial'];
 
-            if($initial){
-              return $response->withRedirect('/create/initial/user');
+            if ($initial) {
+                return $response->withRedirect('/create/initial/user');
             }
 
             return $response->withRedirect('/register');
@@ -145,8 +145,8 @@ class AuthController extends AbstractController
             ]);
 
             //if initial is true, mark install process complete
-            if($initial){
-              $this->install->markAsInstalled();
+            if ($initial) {
+                $this->install->markAsInstalled();
             }
 
             // redirect to login - or anywhere
@@ -167,4 +167,5 @@ class AuthController extends AbstractController
         });
         */
     }
+
 }

@@ -34,51 +34,51 @@ class ApiController extends AbstractController
     // get latest temperature & log, for use with processing cmds
     public function logTemperature(Request $request, Response $response, $args)
     {
-          $data = $this->temperature->readTemperature();
-          //handle file not found
-          if($data['status'] == 'ERR'){
+        $data = $this->temperature->readTemperature();
+        //handle file not found
+        if ($data['status'] == 'ERR') {
             $status = array('status' => 'ERROR', 'message' => $data['msg']);
             $this->log->critical(json_encode($status));
             $response = $response->withHeader('Content-Type', 'application/json');
             $response = $response->withJson($status, 500);
             return $response;
-          }
+        }
 
-          //Lets catch any thermometer failures here - incase the thermometr is having issues.
-          //Log it differently in the datafile
-          if($data['status'] == 'NO'){
+        //Lets catch any thermometer failures here - incase the thermometr is having issues.
+        //Log it differently in the datafile
+        if ($data['status'] == 'NO') {
             $string = "Unable to get a temperature reading with attempts: " . $data['attempts'];
             $msgStat = "ERROR";
             //log thermometer problem
             $this->log->critical($string);
-          }else{
+        } else {
             $string = $data['celcius'] . " : " . $data['ferenheit'];
             $msgStat = "SUCCESS";
-          }
+        }
 
-          //write log file
-          $log = $this->logger->write($string);
-          //update Readme.md
+        //write log file
+        $log = $this->logger->write($string);
+        //update Readme.md
 
-          if(!$log){
+        if (!$log) {
             $status = array('status' => 'ERROR', 'message' => 'Trouble logging to datafile!');
             $this->log->critical(json_encode($status));
             $response = $response->withHeader('Content-Type', 'application/json');
             $response = $response->withJson($status, 500);
             return $response;
-          }
+        }
 
-          //rebuild array for custom messages.
-		      $status = array(
+        //rebuild array for custom messages.
+        $status = array(
             'status'    =>  $msgStat,
             'timestamp' =>  $data['timestamp'],
             'ferenheit' =>  $data['ferenheit'],
             'celcius'   =>  $data['celcius'],
             'attempts'  =>  $data['attempts'],
           );
-          $response = $response->withHeader('Content-Type', 'application/json');
-          $response = $response->withJson($status, 200);
-          return $response;
+        $response = $response->withHeader('Content-Type', 'application/json');
+        $response = $response->withJson($status, 200);
+        return $response;
     }
 
     // Health Status - Simple health check
@@ -95,17 +95,17 @@ class ApiController extends AbstractController
     {
         $g = $this->uptime->getUptime();
 
-        if(!$g){
-          $data = array(
+        if (!$g) {
+            $data = array(
             'status' => '500',
             'message' => 'Bad date conversion'
           );
-          //log it
-          $this->log->critical(json_encode($data));
+            //log it
+            $this->log->critical(json_encode($data));
 
-          $response = $response->withHeader('Content-Type', 'application/json');
-          $response = $response->withJson($data, 500);
-          return $response;
+            $response = $response->withHeader('Content-Type', 'application/json');
+            $response = $response->withJson($data, 500);
+            return $response;
         };
 
         //build array for json output
@@ -124,5 +124,5 @@ class ApiController extends AbstractController
     {
         echo "Authenticated!";
     }
-
+    
 }

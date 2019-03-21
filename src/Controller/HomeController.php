@@ -30,5 +30,5 @@ class HomeController extends AbstractController
         $data = array('title' => 'Home', 'install' => $install);
         return $this->view->render($response, 'Home.html', $data);
     }
-
+    
 }

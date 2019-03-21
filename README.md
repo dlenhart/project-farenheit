@@ -93,6 +93,10 @@ Keep in mind you really need to fulfill the existing hardware for this to be use
   1. OPTIONAL: Launch server.bat if on Windows or server.sh for Linux - (alternative)!
   2. Visit `http://localhost:8000` & follow install instructions.
 
+**Additional Steps**
+
+1. Update `scripts/record_temperature.sh` with username/password created in installation.
+
 
 ***
 ## Website

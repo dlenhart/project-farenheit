@@ -4,7 +4,7 @@
 		<div class="supportPanel panel panel-primary" data-title="category">
 			<div class="panel-heading"><b>Status</b></div>
 			<div class="panel-body container-fluid" data-id="category">
-			<br />
+				<br />
 				<div id="monitoringResults">
 					{% if auth.authenticated %}
 						{% include 'Monitor.html' %}
@@ -15,57 +15,50 @@
 
 				<!--Install box - flag comes via HomeController -->
 				{% if install == false %}
-					<hr />
-					<div class="alert alert-warning" role="alert">
-						<h4>Install</h4>
-						<a class="btn btn-default" id="createDB">1. Create Database</a> >>
-						<a class="btn btn-default" id="createUserTB">2. Create User Table</a> >>
-						<a class="btn btn-default" id="" href="/create/initial/user">3. Create Initial User</a>
+				<hr />
+				<div class="alert alert-warning" role="alert">
+					<h4>Install</h4>
+					<a class="btn btn-default" id="createDB">1. Create Database</a> >>
+					<a class="btn btn-default" id="createUserTB">2. Create User Table</a> >>
+					<a class="btn btn-default" id="" href="/create/initial/user">3. Create Initial User</a>
 
-						<div id="ResultsTerminal">
-							<div class="resultsConsole" id="resultsConsole">>__</div>
-						</div>
+					<div id="ResultsTerminal">
+						<div class="resultsConsole" id="resultsConsole">>__</div>
 					</div>
-					<script>
-						//Create Database
-						$( "#createDB" ).click(function() {
-							$.get( "/install", function( data ) {
-								//
-								$('#resultsConsole').html(data);
+				</div>
+				<script>
+					//Create Database
+					$("#createDB").click(function() {
+						$.get("/install", function(data) {
+							//
+							$('#resultsConsole').html(data);
 
-								}).done( function( data )
-								{
-										$('#resultsConsole').html(data);
-								});
+						}).done(function(data) {
+							$('#resultsConsole').html(data);
 						});
+					});
 
-						//create User table
-						$( "#createUserTB" ).click(function() {
-							$.get( "/install/create", function( data ) {
-								//
-								$('#resultsConsole').html(data);
+					//create User table
+					$("#createUserTB").click(function() {
+						$.get("/install/create", function(data) {
+							//
+							$('#resultsConsole').html(data);
 
-								}).done( function( data )
-								{
-										$('#resultsConsole').html(data);
-								});
+						}).done(function(data) {
+							$('#resultsConsole').html(data);
 						});
+					});
 
-						//show initial user signup
-						$( "#createUserBox" ).click(function() {
-								$('#initialUser').show();
-						});
-					</script>
+					//show initial user signup
+					$("#createUserBox").click(function() {
+						$('#initialUser').show();
+					});
+				</script>
 				{% endif %}
 				<!--Display a small admin Panel if logged in-->
-				{% if auth.authenticated %}
-					{% include 'Admin-home.html' %}
-				{% endif %}
+				{% if auth.authenticated %} {% include 'Admin-home.html' %} {% endif %}
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-
-</script>
 {% endblock %}

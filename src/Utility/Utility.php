@@ -26,10 +26,11 @@ class Utility
     * Class constructor
     * @param string $file - path and filename of config file
     */
-    public function __construct($file = __DIR__ . "/../../config/config.ini"){
+    public function __construct($file = __DIR__ . "/../../config/config.ini")
+    {
         $this->file = $file;
         //check if file exsists
-        if(!file_exists($this->file)){
+        if (!file_exists($this->file)) {
             //throw exception if not found
             throw new Exception("ERROR: Unable to read configuration!", 1);
         }
@@ -40,11 +41,12 @@ class Utility
     * readINIConfig Method ( reads ini file )
     * @return array $parse
     */
-    public function readINIConfig(){
+    public function readINIConfig()
+    {
         $parse = parse_ini_file($this->file);
 
         if (empty($parse)) {
-          return false;
+            return false;
         }
 
         return $parse;
@@ -55,16 +57,17 @@ class Utility
     * @param string $string
     * @return $result
     */
-    public function getINIValue($string){
+    public function getINIValue($string)
+    {
         //readINIconfig returns array, find value
         $read = $this->readINIConfig();
         $result = $read[$string];
 
-        if($result == '' || $result == null){
-          return false;
+        if ($result == '' || $result == null) {
+            return false;
         }
 
         return $result;
     }
-
+    
 }

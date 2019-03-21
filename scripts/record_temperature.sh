@@ -6,7 +6,7 @@
 # Author:  Drew D. Lenhart
 # Date:  03/19/2018
 # URL: https://github.com/dlenhart/project-farenheit
-# Desc:  Start/Stop shell script for Redis
+# Desc:  Gets temperature data via curl & logs
 #
 # Use: ./record_temperature.sh
 ###
