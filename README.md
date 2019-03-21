@@ -74,11 +74,11 @@ The main software components are the Dashboard and the Restful API.
 
 The dashboard is self explanatory. Displays current temperature on page load ( Ajax call to API ). Refresh button sends additional call. History directs to separate page which reads datafile.
 
-![Dashboard](materials/images/pf_dashboard.png)
+![Dashboard](materials/images/pf_dashboard.png){:class="img-responsive"}
 
 Screen shot if temperature sensor is unable to get a reading:
 
-![Dashboard errors](link-to-image)
+![Dashboard errors](materials/images/pf_dashboard_errors.png){:class="img-responsive"}
 
 ## Software Requirements
 
@@ -86,7 +86,7 @@ Keep in mind you really need to fulfill the existing hardware for this to be use
 
 * PHP 7.1 +
 * Apache w/ Mod_Rewrite
-* [Composer](https://getcomposer.org/download/)
+* [Composer](https://getcomposer.org/download/){:class="img-responsive"}
 * Python3 ( some scripts required )
 
 ## Software Setup
