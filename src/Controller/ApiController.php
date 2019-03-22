@@ -58,7 +58,6 @@ class ApiController extends AbstractController
 
         //write log file
         $log = $this->logger->write($string);
-        //update Readme.md
 
         if (!$log) {
             $status = array('status' => 'ERROR', 'message' => 'Trouble logging to datafile!');
@@ -119,10 +118,10 @@ class ApiController extends AbstractController
         return $response;
     }
 
-    // Test
+    // Testing random stuff
     public function test(Request $request, Response $response, $args)
     {
         echo "Authenticated!";
     }
-    
+
 }
