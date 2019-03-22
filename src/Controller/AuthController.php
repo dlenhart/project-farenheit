@@ -164,7 +164,7 @@ class AuthController extends AbstractController
       return $this->view->render($response, 'Users.html', $data);
     }
 
-    // Delete Post
+    // Delete User
     public function deleteUser(Request $request, Response $response, $args)
     {
         // validation
