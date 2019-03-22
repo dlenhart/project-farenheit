@@ -1,0 +1,34 @@
+{% extends 'Layout.html' %} {% block content %}
+<div class="row">
+	<div style="margin-top: 1%" id="home">
+		<div class="supportPanel panel panel-primary" data-title="category">
+			<div class="panel-heading"><b>History</b></div>
+			<div class="panel-body container-fluid" data-id="category">
+				<table class="table table-bordered">
+				  <tr>
+						<td><strong>Timestamp</strong></td>
+						<td><strong>Celcius</strong></td>
+						<td><strong>Farenheit</strong></td>
+					</tr>
+
+					{% for item in contents|reverse %}
+					
+						{% set foo = item|split(' : ') %}
+
+						<tr>
+							<td>{{ foo[0] }}</td>
+							<td>{{ foo[1] }}</td>
+							<td>{{ foo[2] }}</td>
+						</tr>
+
+					{% else %}
+						<p style='color: red'>
+							<b>Either no entries, or file is missing!</b>
+						</p>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

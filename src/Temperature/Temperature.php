@@ -64,9 +64,9 @@ class Temperature
         if (!file_exists($this->temperature_file)) {
             //return something nice so controller can return a readable json message.
             $error = array(
-            'status' => 'ERR',
-            'msg' => 'W1 file does not exsist! Verify path in config.ini!'
-          );
+              'status' => 'ERR',
+              'msg' => 'W1 file does not exsist! Verify path in config.ini!'
+            );
             return $error;
             //die('W1 file does not exsist! Verify path in config.ini!');
         }

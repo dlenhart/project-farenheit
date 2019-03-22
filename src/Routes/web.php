@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 $app->get('/', 'HomeController:index');
-
+$app->get('/history', 'HomeController:history');
 // Create Sample SQLite database
 $app->get('/install', 'InstallController:createDatabase');
 // Create Users table....

@@ -87,7 +87,7 @@ class Logger
         $time = date($this->params['dformat']);
 
         // Write $time & $temp
-        fwrite($this->file, "[$time] : $temp" . PHP_EOL);
+        fwrite($this->file, "$time : $temp" . PHP_EOL);
     }
 
     /**

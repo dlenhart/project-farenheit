@@ -50,7 +50,7 @@ Build a temperature gathering system & application to run on a Raspberry Pi. The
 
 **Note these may be added down the road**
 * 2nd Raspberry Pi ( backup Pi ).
-* [Battery backup](https://www.adafruit.com/product/1565) - more on this later.
+* [Battery backup](https://www.adafruit.com/product/1565) - more thoughts on this later.
 
 **Temperature sensor setup**
 
@@ -86,7 +86,7 @@ Keep in mind you really need to fulfill the existing hardware for this to be use
 
 * PHP 7.1 +
 * Apache w/ Mod_Rewrite
-* [Composer](https://getcomposer.org/download/){:class="img-responsive"}
+* [Composer](https://getcomposer.org/download/)
 * Python3 ( some scripts required )
 
 ## Software Setup
@@ -105,8 +105,9 @@ Keep in mind you really need to fulfill the existing hardware for this to be use
 
 **Additional Steps**
 
-1. Update `scripts/record_temperature.sh` with username/password created in installation.
-2. Update 'config.ini', 'GPIO_PATH' with location of temperature output file.
+* Update `scripts/record_temperature.sh` with username/password created in installation.
+  1. Update URL if needed.
+* Update `config.ini`, `GPIO_PATH` with location of temperature output file (See hardware above)
   a. e.g. ``
 
 
