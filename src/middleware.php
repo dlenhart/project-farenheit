@@ -59,9 +59,9 @@ $authenticateAPI = function ($request, $response, $next) {
         if (!$auth) {
             //false
             $status = array('status' => '401', 'msg' => 'incorrect credentials!');
-            $credentials = $creds[0] . " : " . $creds[1];
+            
             //lets log the bad attempts
-            $this->log->critical("Incorrect Credential attempt: " . $credentials);
+            $this->log->critical("Incorrect Credential attempt: Username: " . $creds[0]);
             $response = $response->withHeader('Content-Type', 'application/json');
             $response = $response->withJson($status, 401);
             return $response;
