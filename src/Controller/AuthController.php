@@ -58,7 +58,7 @@ class AuthController extends AbstractController
 
             if ($auth) {
                 //true
-                return $response->withRedirect('/admin');
+                return $response->withRedirect('/');
             } else {
                 //false send back to login
                 $this->flash->addMessage('err', 'Incorrect username or password!');
@@ -154,18 +154,44 @@ class AuthController extends AbstractController
         }
     }
 
-    // Delete New User - DELETE
-    public function delete(Request $request, Response $response, $args)
+    // User Mgr view
+    public function users(Request $request, Response $response, $args)
     {
-        /*
-        $.ajax({
-          url: '/script.cgi',
-          type: 'DELETE',
-          success: function(result) {
-              // Do something with the result
-          }
-        });
-        */
+      $users = new User;
+      $users = User::all();
+      // return response in view.
+      $data = array('title' => 'User Mgr', 'users' => $users);
+      return $this->view->render($response, 'Users.html', $data);
+    }
+
+    // Delete Post
+    public function deleteUser(Request $request, Response $response, $args)
+    {
+        // validation
+        $validation = $this->validator->validate($request, [
+            'id' => v::notEmpty(),
+        ]);
+
+        if ($validation->failed()) {
+            // failed validation from APP\Validator
+            $status = array('status' => 'Failed', 'Message' => 'Missing ID');
+
+            $response = $response->withHeader('Content-Type', 'application/json');
+            $response = $response->withJson($status, 500);
+            return $response;
+        } else {
+          $allVars = (array)$request->getParsedBody();
+          $id = $allVars['id'];
+          //find by id and delete
+          $delete = new User;
+          $delete = User::find($id)->delete();
+
+          $status = array('status' => 'Success', 'Message' => 'Removed user!');
+
+          $response = $response->withHeader('Content-Type', 'application/json');
+          $response = $response->withJson($status, 200);
+          return $response;
+        }
     }
 
 }

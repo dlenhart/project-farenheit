@@ -8,11 +8,7 @@ e.g. -   $app->get("route/url", '{{controller}}:{{method}}');
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-// Admin landing - just forwarding to root
-$app->get('/admin', function ($request, $response, $args) {
-  //redirect
-  return $response->withRedirect('/');
-});
+
 
 // Register New Users ( authenticate )
 $app->get('/register', 'AuthController:viewRegister')
@@ -26,8 +22,9 @@ $app->get('/create/initial/user', 'AuthController:initialUser')
   ->add($oldFormData)
   ->add($validationErrors);
 
-//delete user
-$app->delete('/register/delete', 'AuthController:delete');
+//User view
+$app->get('/users', 'AuthController:users')->add($authenticate);
+$app->post('/users/delete', 'AuthController:deleteUser');
 
 // Login/logout
 $app->get('/login', 'AuthController:login')->add($validationErrors);

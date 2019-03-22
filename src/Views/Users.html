@@ -1,0 +1,90 @@
+{% extends 'Layout.html' %} {% block content %}
+<div class="row">
+	<div style="margin-top: 1%" id="home">
+		<div class="supportPanel panel panel-primary" data-title="category">
+			<div class="panel-heading"><b>{{ title }}</b></div>
+			<div class="panel-body container-fluid" data-id="category">
+				<table class="table table-bordered">
+				  <tr>
+						<td><strong>ID</strong></td>
+						<td><strong>Name</strong></td>
+						<td><strong>E-mail</strong></td>
+						<td><strong>Operations</strong></td>
+					</tr>
+
+					{% for user in users %}
+
+						<tr>
+							<td>{{ user.id }}</td>
+							<td>{{ user.name }}</td>
+							<td>{{ user.email }}</td>
+							<td>
+									<button type="button" data-toggle='modal' data-target='#delete_{{ user.id }}' class="btn btn-danger btn-xs">
+										Delete
+									</button>
+									<!----- Delete Modal ------>
+									<div class="modal fade" id="delete_{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									  <div class="modal-dialog modal-md">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+									        <h4 class="modal-title" id="myModalLabel" style="color: black">Delete User</h4>
+									      </div>
+									      <div class="modal-body" style="color: black" >
+									          Are you sure you want to remove user: <em>{{ user.email }}</em>?<br />
+									          <br /><br />
+														<button type="button" id="yesBtn_{{ user.id }}" class="btn btn-success btn-sm">Yes</button>
+														<button data-dismiss="modal" id="{{ user.id }}_modal_Close_again" class="btn btn-warning btn-sm">Cancel</button>
+														<br />
+														<div id="{{ user.id }}results" style="display: none"></div>
+									      </div>
+									      <div class="modal-footer">
+									        <button data-dismiss="modal" id="{{ user.id }}close" class="btn large">Close</button>
+									      </div>
+									    </div>
+									  </div>
+									</div>
+									<!--End Delete modal-->
+							</td>
+							<script>
+								$( "#yesBtn_{{ user.id }}" ).click(function() {
+
+									var id = '{{ user.id }}';
+
+									$.post( "/users/delete", {id: id})
+										.done( function( data )
+										{
+											if (data.status == 'Success'){
+												$('#{{ user.id }}results').html('<p><b style="color: green" > Updated status message: ' + data.Message + '!</b></p>').show();
+											}else{
+												$('#{{ user.id }}results').html('<b style="color: red" > ERROR: ' + data.Message + '</b>').show();
+											}
+										})
+										.fail(function(data) {
+											$('#{{ user.id }}results').html('<b style="color: red" > ERROR: ' + data + '</b>').show();
+											console.log(data);
+										})
+								 });
+
+								 //close button, just refresh page
+								 $( "#{{ user.id }}_modal_Close_again" ).click(function() {
+										 location.reload();
+								 });
+								 $( "#{{ user.id }}close" ).click(function() {
+										 location.reload();
+								 });
+						</script>
+						</tr>
+
+					{% else %}
+						<p style='color: red'>
+							<b>No users found! Create a user!</b>
+						</p>
+					{% endfor %}
+				</table>
+				<a class="btn btn-success" href='/register'>Create User <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

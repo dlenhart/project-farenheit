@@ -1,14 +1,7 @@
 {% block content %}
 <hr />
 <h4>Admin Operations</h4>
-<a class="btn btn-primary" href='/register'>Create User</a>
-<a class="btn btn-danger" id="deleteUser">Delete User</a>
+<a class="btn btn-default" href='/register'>Create User</a>
+<a class="btn btn-info" href="/users">User Manager</a>
 <a class="btn btn-warning" href='/logout'>Logout</a>
-
-<script>
-  //Create Database
-  $("#deleteUser").click(function() {
-    alert('Ok, so I did not finish this.....');
-  });
-</script>
 {% endblock %}
