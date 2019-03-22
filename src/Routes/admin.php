@@ -24,7 +24,7 @@ $app->get('/create/initial/user', 'AuthController:initialUser')
 
 //User view
 $app->get('/users', 'AuthController:users')->add($authenticate);
-$app->post('/users/delete', 'AuthController:deleteUser');
+$app->post('/users/delete', 'AuthController:deleteUser')->add($authenticate);
 
 // Login/logout
 $app->get('/login', 'AuthController:login')->add($validationErrors);
