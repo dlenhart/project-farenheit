@@ -16,3 +16,4 @@ $app->get('/api/get/temperature/log', 'ApiController:logTemperature')->add($auth
 $app->get('/api/get/uptime', 'ApiController:uptime')->add($authenticateAPI);
 $app->get('/api/get/health', 'ApiController:health');
 $app->get('/api/get/test', 'ApiController:test')->add($authenticateAPI);
+$app->get('/api/get/lights', 'TestController:lights')->add($authenticate);

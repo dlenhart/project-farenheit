@@ -111,6 +111,11 @@ $container['AuthController'] = function ($container) {
     return new \APP\Controller\AuthController($container);
 };
 
+// TestController
+$container['TestController'] = function ($container) {
+    return new \APP\Controller\TestController($container);
+};
+
 // InstallController
 $container['InstallController'] = function ($container) {
     return new \APP\Controller\InstallController($container);

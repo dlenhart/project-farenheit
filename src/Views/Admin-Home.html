@@ -1,7 +1,31 @@
 {% block content %}
 <hr />
 <h4>Admin Operations</h4>
-<a class="btn btn-default" href='/register'>Create User</a>
-<a class="btn btn-info" href="/users">User Manager</a>
-<a class="btn btn-warning" href='/logout'>Logout</a>
+<a class="btn btn-default" href='/register'>Create User <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+<a class="btn btn-info" href="/users">User Manager <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+<button id="lightTest" class="btn btn-primary" href="">Light Test <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
+<a class="btn btn-warning" href='/logout'>Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+
+<!-- light test results -->
+<div id='lights' style="display: none"></div>
+
+<script>
+  $( "#lightTest" ).click(function() {
+    $( "#lights" ).fadeIn("slow");
+    //add the generic spinner!
+    $( "#lights" ).html('<br /><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>..<em>are you watching the lights?</em>...');
+    //perform a GET against lights endpoint
+    $.get("/api/get/lights", function(data) {
+      console.log(data);
+      //clear if anything
+    }).done(function(data) {
+      $status = data.msg;
+      //just output whatever results returned.
+      $('#lights').html('<br /><div class="alert alert-success" role="alert"><strong>SUCCESS!</strong> ' + $status + '</div>');
+    }).fail(function(){
+      $('#lights').html('<br /><div class="alert alert-danger" role="alert"><strong>WARNING!</strong> Problem with endpoint!</div>');
+    });
+  });
+</script>
+
 {% endblock %}

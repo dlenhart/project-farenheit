@@ -4,13 +4,12 @@
 *
 */
 
-
-// round function
+// Round function
 function round(value, decimals) {
   return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
 }
 
-// get current temperature via test api
+// Get current temperature via test api
 function getTemperature() {
   // ajax call to /api/get/temperature
   $('#temp_spinner').show();
@@ -73,7 +72,7 @@ function getTemperature() {
   });
 }
 
-// call uptime after the page loads.
+// Call uptime after the page loads.
 function getUptime() {
   $.get("/api/get/uptime", function(data) {
     console.log(data.DateConverted);
