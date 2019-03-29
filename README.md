@@ -1,6 +1,6 @@
 # project-farenheit
 
-### Experiment Status: TESTING | Experiment Start Date: April 2, 2019
+### Experiment Status: TESTING | Experiment Start Date: April 8, 2019
 
 ### [View current data here](data/temperature_fw_in.dat)
 ***
@@ -41,9 +41,9 @@ Build a temperature gathering system & application to run on a Raspberry Pi. The
 
 **Parts:**
 * Raspberry Pi w/ Raspbian installed.
-* DS18B20 Digital Temperature sensor
+* [DS18B20 Digital Temperature sensor](https://www.adafruit.com/product/381)
 * 4.7K or 10K ohm resistor
-* Breadboard
+* Breadboard (solderable)
 * Jump wires
 * [Pi Cobbler](https://www.adafruit.com/product/2029)
 * IDE ribbon cable.
@@ -54,15 +54,46 @@ Build a temperature gathering system & application to run on a Raspberry Pi. The
 
 **Temperature sensor setup**
 
-I followed the [Temperature sensor assembly instructions](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware) from Adafruit. It is pretty easy to get up and going with these instructions. As an alternative I used a more permanent solution than using a breadboard.
+I followed the [Temperature sensor assembly instructions](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware) from Adafruit. It is pretty easy to get up and going with these instructions. I also used a 1 x 2 inch solderable breadboard for a more stable solution and is just big enough to hold the Pi Cobbler, temp sensor, and indicator lights without getting too cramped.
+
+Below is the schematic (taken from Adafruit and used without permission)
+
+![Dashboard errors](materials/images/learn_raspberry_pi_breadboard-probe.png)
+
+**Temperature Sensor Setup**
+
+There are a few steps in order to begin collecting temperature, so we need to add OneWire support.
+
+On the Raspberry Pi, add the below line to `/boot/config.txt`
+
+`dtoverlay=w1-gpio` -- then reboot the Pi.
+
+Finally:
+
+`sudo modprobe w1-gpio`
+
+`sudo modprobe w1-therm`
+
+`cd /sys/bus/w1/devices`
+
+`ls`
+
+`cd 28-xxxx (change xxxx to what shows from above command)`
+
+`cat w1_slave`
+
+You should see two lines outputted from the above command. The first line ends in either YES or NO. If its a YES, the sensor got a good reading. The 2nd line outputs the temperature, for example `a2 01 4b 46 7f ff 0e 10 d8 t=023345` where `t=023345` is the raw temperature and needs to be converted.
+
+**NOTE: type `pwd` to get the full path of the `w1_slave` file, this path is needed for the software installation below and will need to be entered into `config.ini`!**
 
 **Indicator Light Setup**
 
-info coming soon
+Info coming soon!
 
 **Final Assembly**
 
-final setup w/ images coming soon.
+Since this project is heavily on the cheap side, I decided to enclose everything in a metal case. The case is from an old exterior timer for a lighting system, and works great for this project as the inside is large enough for everything. I drilled two holes on the front cover door for the 2 indicator LED's and painted the case with a rubbed bronze spray paint.
+
 
 ***
 
@@ -110,6 +141,11 @@ Keep in mind you really need to fulfill the existing hardware for this to be use
 * Update `config.ini`, `GPIO_PATH` with location of temperature output file (See hardware above)
   a. e.g. ``
 
+
+***
+## Final Thoughts
+
+I went on the cheapest route possible for this project and re-used a lot of components I already had lying around. If I were to do a second version of this project, I would definitely make the whole unit smaller using a Raspberry Pi Zero or perhaps something else. I think I would also make the unit weather proof & power it with solar to keep it outside permanently.
 
 ***
 ## Website
