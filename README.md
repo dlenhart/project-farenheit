@@ -56,9 +56,13 @@ Build a temperature gathering system & application to run on a Raspberry Pi. The
 
 I followed the [Temperature sensor assembly instructions](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware) from Adafruit. It is pretty easy to get up and going with these instructions. I also used a 1 x 2 inch solderable breadboard for a more stable solution and is just big enough to hold the Pi Cobbler, temp sensor, and indicator lights without getting too cramped.
 
-Below is the schematic (taken from Adafruit and used without permission)
+Below is the schematic (taken from Adafruit and used without permission):
 
-![Dashboard errors](materials/images/learn_raspberry_pi_breadboard-probe.png)
+![Adafruit Schematic](materials/images/learn_raspberry_pi_breadboard-probe.png)
+
+My final circuit (without light indicator wiring):
+
+![My Circuit](materials/images/myCobblerC.PNG)
 
 **Temperature Sensor Setup**
 
@@ -70,17 +74,12 @@ On the Raspberry Pi, add the below line to `/boot/config.txt`
 
 Finally:
 
-`sudo modprobe w1-gpio`
-
-`sudo modprobe w1-therm`
-
-`cd /sys/bus/w1/devices`
-
-`ls`
-
-`cd 28-xxxx (change xxxx to what shows from above command)`
-
-`cat w1_slave`
+>sudo modprobe w1-gpio<br />
+>sudo modprobe w1-therm<br />
+>cd /sys/bus/w1/devices<br />
+>ls<br />
+>cd 28-xxxx (change xxxx to what shows from above command)<br />
+>cat w1_slave
 
 You should see two lines outputted from the above command. The first line ends in either YES or NO. If its a YES, the sensor got a good reading. The 2nd line outputs the temperature, for example `a2 01 4b 46 7f ff 0e 10 d8 t=023345` where `t=023345` is the raw temperature and needs to be converted.
 
@@ -93,6 +92,14 @@ Info coming soon!
 **Final Assembly**
 
 Since this project is heavily on the cheap side, I decided to enclose everything in a metal case. The case is from an old exterior timer for a lighting system, and works great for this project as the inside is large enough for everything. I drilled two holes on the front cover door for the 2 indicator LED's and painted the case with a rubbed bronze spray paint.
+
+Case with Pi mounted - no cover:
+
+![Case](materials/images/standingPi.PNG)
+
+Case put together - no light indicator assembly:
+
+![Case](materials/images/putTogether.PNG)
 
 
 ***
@@ -118,7 +125,7 @@ Keep in mind you really need to fulfill the existing hardware for this to be use
 * PHP 7.1 +
 * Apache w/ Mod_Rewrite
 * [Composer](https://getcomposer.org/download/)
-* Python3 ( some scripts required )
+* Python ( some scripts required )
 
 ## Software Setup
 
