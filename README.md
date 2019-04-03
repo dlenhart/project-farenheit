@@ -10,7 +10,7 @@ This project is a fun little experiment with a Raspberry Pi 2. Awhile ago, a You
 
 I thought it would be interesting, as an experiment, to see if I can build a system that lasts for years, even a decade! I also wanted this system to actually perform a specific function. How long can I manage to keep it alive without little to no maintenance? To do this experiment, I had absolutely no budget (HAHA), so I settled on using equipment I already had around the house.
 
-A few years ago, approx 2015, I bought a Raspberry Pi 2 & a DS18B20 waterproof temperature sensor and other various components needed from Adafruit (see links below). I got it to function, using a script to record the temperature from the sensor and log it to a database. I even build a little web dashboard to display the temperature. It ran in my laundry room for several months, collecting the temperature. After a house move, it was disconnected and sat in a drawer for 2 years, oops. This will be re-used for my experiment.
+A few years ago, approx 2015, I bought a Raspberry Pi 2 & a DS18B20 waterproof temperature sensor and other various components needed from Adafruit (see links below). I got it to function, using a script to record the temperature from the sensor and log it to a database. I even built a small web dashboard to display the temperature. It ran in my laundry room for several months, collecting the temperature. After a house move, it was disconnected and sat in a drawer for 2 years, oops. This will be re-used for my experiment.
 
 ***
 ## The Goal
@@ -81,13 +81,13 @@ Finally:
 >cd 28-xxxx (change xxxx to what shows from above command)<br />
 >cat w1_slave
 
-You should see two lines outputted from the above command. The first line ends in either YES or NO. If its a YES, the sensor got a good reading. The 2nd line outputs the temperature, for example `a2 01 4b 46 7f ff 0e 10 d8 t=023345` where `t=023345` is the raw temperature and needs to be converted.
+You should see two lines outputted from the above command. The first line ends in either YES or NO. If a YES is displayed, the sensor received a good reading. The 2nd line outputs the temperature, for example `a2 01 4b 46 7f ff 0e 10 d8 t=023345` where `t=023345` is the raw temperature and needs to be converted.
 
 **NOTE: type `pwd` to get the full path of the `w1_slave` file, this path is needed for the software installation below and will need to be entered into `config.ini`!**
 
 **Indicator Light Setup**
 
-Info coming soon!
+More info on this soon!
 
 **Final Assembly**
 
@@ -123,9 +123,11 @@ Screen shot if temperature sensor is unable to get a reading:
 Keep in mind you really need to fulfill the existing hardware for this to be useful, although you can replace the `GPIO_TEST` setting in `config.ini` to `true`, and the application will use the provided mock file located at `/data/w1-slave` ( allows you to at least tinker with the application without the temperature sensor )
 
 * PHP 7.1 +
-* Apache w/ Mod_Rewrite
+* Apache w/ mod_rewrite (see link below)
 * [Composer](https://getcomposer.org/download/)
 * Python ( some scripts required )
+
+[See instructions for preparing a Raspberry Pi with PHP 7.2 & required modules](https://www.tal.org/tutorials/raspberrypi_php_apache)
 
 ## Software Setup
 
