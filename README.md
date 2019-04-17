@@ -3,6 +3,8 @@
 ### Experiment Status: TESTING | Experiment Start Date: April 8, 2019
 
 ### [View current data here](data/temperature_fw_in.dat)
+
+###Update: Putting this experiment on hold - the Raspberry Pi used for this project died after the first night of testing!
 ***
 ## Introduction
 
